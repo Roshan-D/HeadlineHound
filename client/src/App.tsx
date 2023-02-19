@@ -29,7 +29,6 @@ export const App = () => {
   }
   
   const handleSubmit = async () => {
-    console.log(url);
     const response = await axios.get(`http://localhost:3000/summarize?url=${url}`);
 
     if (!response.data || !response.data.title || !response.data.content) {
