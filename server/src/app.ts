@@ -31,10 +31,6 @@ app.route("/summarize").get(async (req, res) => {
 
     try {
         const response = await axios.request(options); 
-        const resp = {
-            "title": response.data.data.title,
-            "content": response.data.data.content,
-        };
 
         const completion = await openai.createCompletion({
             model: "text-davinci-003",
