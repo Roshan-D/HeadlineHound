@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Box, Text } from "@chakra-ui/react"
+import { Box, Textarea, Text } from "@chakra-ui/react"
 
 export interface ArticleProps {
     title: String,
@@ -14,9 +14,9 @@ export const Article: React.FC<ArticleProps> = (props) => (
                     {props.title}
                 </Text>
             </Box>
-            <Text fontSize="md" paddingTop="5px">
-                {props.summary}
-            </Text>
+            <Textarea fontSize="md" paddingTop="5px" minH='240px' isReadOnly>
+                {props.summary.trim()}
+            </Textarea>
         </Box>
     </>
 )

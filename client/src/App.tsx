@@ -20,25 +20,8 @@ import axios from "axios";
 import { Article } from "./article";
 import { Search2Icon } from "@chakra-ui/icons";
 
-let myArticles = [{
-  title: 'My Article',
-  description: 'This is my article',
-}, {
-  title: 'My Article',
-  description: 'This is my article',
-}, {
-  title: 'My Article',
-  description: 'This is my article',
-}, {
-  title: 'My Article',
-  description: 'This is my article',
-}, {
-  title: 'My Article',
-  description: 'This is my article',
-}]
-
 export const App = () => {
-  const [articles, setArticles] = useState(myArticles);
+  const [articles, setArticles] = useState([{title: "", description: ""}]);
   const [url, setUrl] = useState("");
 
   function handleChange(event: { target: { value: React.SetStateAction<string>; }; }) {
@@ -90,9 +73,15 @@ export const App = () => {
             </InputGroup>
           </VStack>
           <Grid minH="80vh">
-            <SimpleGrid minChildWidth='180px' spacing='40px'>
+            <SimpleGrid minChildWidth='250px' spacing='40px'>
               {articles.map((article) => (
-                <Article title={article.title} summary={article.description}/>
+                <>
+                  {
+                    article.title !== "" && article.description !== "" && (
+                      <Article title={article.title} summary={article.description}/>
+                    )
+                  }
+                </>
               ))}
             </SimpleGrid>
           </Grid>
